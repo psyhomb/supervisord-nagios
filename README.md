@@ -52,21 +52,15 @@ Note that the `statename` attribute is used, rather than the `state` attribute.
 
 This checks processes running under supervisord.
 
-* `-p, --process PROC1[,PROC2[...]]`
+* `PROC1 [PROC2 [...]]` -- the processes to check the statuses of.
 
-Check the statuses of the listed processes.
-
-* `-A, --require-all BOOLEAN`
-
-Require all of the listed processes to exist and be in acceptable states. Defaults to true.
-
-Any process resulting in an UNKNOWN state will result in an UNKNOWN state being reported back to nagios.
+This will always return the "worst" status code of the list of processes.
 
 ## supervisorctl nagios\_checkgroup
 
 Reports on the number of processes in the specified group(s) in each state and can warn or critical based on information.
 
-* `-g, --group GROUP[,GROUP[...]]` -- the group(s) to check the statuses of.
+* `GROUP1 [GROUP2 [...]]` -- the group(s) to check the statuses of.
 
 * `-W, --warncritcount INTEGER` -- the warning threshold for the number of processes in a warning state. Defaults to 0 (disabled).
 * `-C, --critcritcount INTEGER` -- the critical threshold for the number of processes in a critical state. Defaults to 0 (disabled).
