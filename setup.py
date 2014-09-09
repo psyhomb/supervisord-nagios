@@ -1,10 +1,10 @@
 import os
 from setuptools import setup
 
-version = '0.1'
+version = '0.1.2'
 
 here = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(here, 'README.md')).read()
+README = open(os.path.join(here, 'README')).read()
 HISTORY = open(os.path.join(here, 'HISTORY.txt')).read()
 
 install_requires = [
