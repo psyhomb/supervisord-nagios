@@ -75,3 +75,5 @@ Reports on the number of processes in the specified group(s) in each state and c
 * `-N, --critprocs INTEGER` -- critical state if the number of total processes in this group drops below this value. Defaults to 1.
 
 Any process resulting in an UNKNOWN state will result in an UNKNOWN state being reported back to nagios.
+
+The counts are all per group. If you want different counts for different groups, use multiple checks.
