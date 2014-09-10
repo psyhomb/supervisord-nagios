@@ -11,7 +11,7 @@ class NagiosControllerPlugin(ControllerPluginBase):
 
     def __init__(self, controller):
         self.ctl = controller
-        self.supervisor = controller.get_server_proxy('supervisor')
+        self.supervisor = controller.get_supervisor()
 
     def _exit_wrapper(self, method, arg):
         try:
