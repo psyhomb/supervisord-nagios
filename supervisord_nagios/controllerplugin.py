@@ -1,10 +1,6 @@
-from supervisor.options import split_namespec
 from supervisor.supervisorctl import ControllerPluginBase
-from supervisor import xmlrpc
-import xmlrpclib
 import sys
 import argparse
-import traceback
 
 class NagiosControllerPlugin(ControllerPluginBase):
     OK = 0
