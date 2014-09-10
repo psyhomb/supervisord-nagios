@@ -200,7 +200,7 @@ class NagiosControllerPlugin(ControllerPluginBase):
         if options.warnwarncount or options.critwarncount:
             if options.critwarncount and warncount >= options.critwarncount:
                 exit_codes.append(self.CRITICAL)
-            elif options.warnwarncount and worncount >= options.warnwarncount:
+            elif options.warnwarncount and warncount >= options.warnwarncount:
                 exit_codes.append(self.WARNING)
 
         if options.warnbadcount or options.critbadcount:
