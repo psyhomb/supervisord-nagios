@@ -14,10 +14,10 @@ class NagiosControllerPlugin(ControllerPluginBase):
         self.supervisor = controller.get_server_proxy('supervisor')
 
     def _exit_wrapper(self, method, arg):
-        #try:
-        exit_codes, output = method(arg)
-        #except Exception, e:
-            #self._exit(self.UNKNOWN, ["uncaught exception in check function: %s" % e])
+        try:
+            exit_codes, output = method(arg)
+        except Exception, e:
+            self._exit(self.UNKNOWN, ["uncaught exception in check function: %s" % e])
 
         self._exit(max(exit_codes), output)
 
