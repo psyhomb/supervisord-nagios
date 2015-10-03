@@ -105,8 +105,9 @@ class NagiosControllerPlugin(ControllerPluginBase):
         options.warn = self._flatten_comma_separated(options.warn)
         options.crit = self._flatten_comma_separated(options.crit)
 
-        if len(options.process) == 0:
-            return [self.UNKNOWN], ['must pass process name(s) to script']
+        if not options.process:
+            for process in self.supervisor.getAllProcessInfo():
+                options.process.append(process['name'])
 
         exit_codes = []
         statuses = []
@@ -115,7 +116,10 @@ class NagiosControllerPlugin(ControllerPluginBase):
             exit_codes.append(exit_code)
             statuses.append(status)
 
-        return [max(exit_codes)], statuses
+        if exit_codes and statuses:
+            return [max(exit_codes)], statuses
+        else:
+            return [self.OK], ["No running process"]
 
     def help_nagios_checkprocess(self):
         self._help(self._get_nagios_checkprocess_parser)
